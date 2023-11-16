@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 
 const Header = () => {
   const navTitles = ["Home", "Porfolio", "About", "Contact"];
   return (
-    <Header>
+    <header>
       <ul>
         {navTitles.map((value, index) => {
           return (
@@ -13,7 +13,7 @@ const Header = () => {
           );
         })}
       </ul>
-    </Header>
+    </header>
   );
 };
 
