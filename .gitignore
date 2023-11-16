@@ -1,1 +1,45 @@
-node_modules
+# Ignore system and IDE files
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore build output
+bin/
+obj/
+Debug/
+Release/
+
+# Ignore dependency directories
+node_modules/
+vendor/
+
+# Ignore log files and backups
+*.log
+*.bak
+
+# Ignore configuration files that may contain sensitive information
+config.ini
+secrets.json
+
+# Ignore compiled files and binary executables
+*.exe
+*.dll
+*.class
+*.jar
+
+# Ignore package manager lock files
+yarn.lock
+package-lock.json
+
+# Ignore operating system generated files
+Thumbs.db
+
+# Ignore temporary files
+*.swp
+
+# Ignore user-specific files
+*.sublime-project
+*.sublime-workspace
