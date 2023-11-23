@@ -1,18 +1,25 @@
-// import React from "react";
+import '../componets/components-style/header-style.scss'
+import {AppstoreTwoTone} from "@ant-design/icons";
 
 const Header = () => {
   const navTitles = ["Home", "Porfolio", "About", "Contact"];
   return (
     <header>
-      <ul>
-        {navTitles.map((value, index) => {
-          return (
-            <a key={index} className="nav-link">
-              {value}
-            </a>
-          );
-        })}
-      </ul>
+        <div className='navigator'>
+            <ul className='nav-list'>
+                {navTitles.map((value, index) => {
+                    return (
+                        <li key={index}><a href='#'  className="nav-link">
+                            {value}
+                        </a></li>
+                    );
+                })}
+            </ul>
+        </div>
+
+        <div className='nav-icon'>
+           <button><AppstoreTwoTone style={{fontSize: '1.5em'}}/></button>
+        </div>
     </header>
   );
 };

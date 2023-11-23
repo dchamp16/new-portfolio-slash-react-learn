@@ -1,0 +1,53 @@
+$TESTCOLOR : yellow;
+
+.navigator {
+  display: flex;
+  justify-content: flex-end;
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    .nav-link {
+      border: 2px solid $TESTCOLOR;
+      list-style: none;
+      color: black;
+      text-decoration: none;
+      position: relative;
+      margin: .5em;
+      transition: color 300ms ease;
+
+      &:hover {
+        //font-family: "Agency FB", sans-serif;
+        color: greenyellow;
+      }
+
+      &:active{
+        text-decoration: underline wavy green;
+      }
+
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+      display: none;
+  }
+
+
+
+
+}
+
+// Hide .nav-icon on large screens
+@media screen and (min-width: 601px) {
+  .nav-icon {
+    display: none;
+  }
+}
+
+// Show .nav-icon on small screens
+@media screen and (max-width: 600px) {
+  .nav-icon {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
