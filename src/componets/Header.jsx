@@ -4,7 +4,7 @@ import {AppstoreTwoTone} from "@ant-design/icons";
 const Header = () => {
   const navTitles = ["Home", "Porfolio", "About", "Contact"];
   return (
-    <header>
+    <header className='header'>
         <div className='navigator'>
             <ul className='nav-list'>
                 {navTitles.map((value, index) => {
