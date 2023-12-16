@@ -11,15 +11,16 @@ import './index.scss'
 
 export default function App() {
   return (
-    <div className="App main-grid">
-      <Header />
-      <BodyContent />
-      <RightBar />
-      <Portfolio />
-      <Footer />
-      {/*<TestButton />*/}
-      <h1>Test Area</h1>
-      <TestUseEffect />
-    </div>
+      <div className="App main-grid">
+          <Header/>
+          <BodyContent/>
+          <RightBar/>
+          <Portfolio/>
+          <Footer/>
+          {/*<TestButton />*/}
+          <h1>Test Area</h1>
+          <TestUseEffect/>
+
+      </div>
   );
 }
