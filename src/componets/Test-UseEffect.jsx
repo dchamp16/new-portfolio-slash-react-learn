@@ -1,54 +1,51 @@
-import React, { useEffect, useState } from "react"; // Importing React, useEffect and useState from 'react'
+import React, { useState } from "react";
+import useFetchData from './hooks/useFetchData'
 
 const TestUseEffect = () => {
-  const [inputValue, setInputValue] = useState(""); // State hook for managing input value
+    // Tracks the text typed by the user
+    const [inputValue, setInputValue] = useState("");
+    // Custom hook to fetch posts and track loading/error status
+    const { data, loading, error } = useFetchData("https://jsonplaceholder.typicode.com/posts");
 
-  // Function to handle changes in the input field
-  function handleInputChange(event) {
-    setInputValue(event.target.value); // Update state with the new input value
-  }
-
-  // Asynchronous function to fetch data from the API
-  async function handleFetch() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts"); // Fetching data from the API
-    if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`); // Throw an error if the response is not OK
+    // Updates inputValue with what the user types
+    function handleInputChange(event) {
+        setInputValue(event.target.value);
     }
-    const json = await response.json(); // Parsing the response to JSON
-    return json; // Return the parsed JSON data
-  }
 
-  // Asynchronous function to handle the rendering logic
-  async function handleRender() {
-    try {
-      const json = await handleFetch(); // Fetching data
-      const randomIndex = Math.floor(Math.random() * json.length); // Generating a random index
-      const randomPost = json[randomIndex]; // Selecting a random post from the fetched data
+    // Displays data, loading status, or error to the user
+    function handleRender() {
+        // If still fetching data, let the user know
+        if (loading) {
+            alert('Please wait, the data is loading...');
+            return;
+        }
 
-      // Check if the entered property exists in the random post
-      if (randomPost.hasOwnProperty(inputValue)) {
-        alert(randomPost[inputValue]); // Alerting the value of the entered property if it exists
-      } else {
-        alert("Invalid property name"); // Alerting if the entered property name is invalid
-      }
-    } catch (error) {
-      alert("An error occurred: " + error.message); // Alerting in case of an error during fetching or rendering
+        // If there was a problem fetching data, show the error
+        if (error) {
+            alert('Sorry, there was a problem: ' + error.message);
+            return;
+        }
+
+        // Picks a random post and checks if the user's input matches a property
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const randomPost = data[randomIndex];
+
+        // Shows the property value if it exists, otherwise informs the user
+        if (inputValue in randomPost) {
+            alert(randomPost[inputValue]);
+        } else {
+            alert("The property you entered doesn't exist.");
+        }
     }
-  }
 
-  // useEffect hook to trigger handleFetch on component mount
-  useEffect(() => {
-    handleFetch(); // Fetch data when the component mounts
-  }, []); // Empty dependency array to ensure it runs only once
-
-  // JSX to render the component
-  return (
-      <>
-        <p>Choices: userId, id, title, body</p> {/* Instruction text */}
-        <input type="text" value={inputValue} onChange={handleInputChange}/> {/* Input field */}
-        <button onClick={handleRender}>Submit</button> {/* Button to trigger handleRender */}
-      </>
-  );
+    // The user interface of the component
+    return (
+        <>
+            <p>Please enter one of the following properties: userId, id, title, body</p>
+            <input type="text" value={inputValue} onChange={handleInputChange}/>
+            <button onClick={handleRender}>Check Property</button>
+        </>
+    );
 };
 
-export default TestUseEffect; // Exporting the component
+export default TestUseEffect;
