@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function BodyContent(props) {
+export function Main(props) {
     return (
         <>
             <main className='main'>
