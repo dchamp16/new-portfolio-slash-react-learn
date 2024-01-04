@@ -1,11 +1,13 @@
 // COMPONETS
 import Header from "./componets/Header";
 //ROUTES
-import { Main } from "./componets/Main";
-import {About} from "./componets/About";
+import { Home } from "./componets/main-content-router/Home";
+import {About} from "./componets/main-content-router/About";
+import {Contact} from "./componets/main-content-router/Contact"
+import Portfolio from "./componets/main-content-router/Portfolio";
 
 import RightBar from "./componets/RightBar";
-import Portfolio from "./componets/Portfolio";
+
 import Footer from "./componets/Footer";
 import TestButton from "./componets/TestButton";
 import TestUseEffect from "./componets/Test-UseEffect";
@@ -22,13 +24,16 @@ export default function App() {
               <Header/>
 
               <Routes>
-                  <Route path="/home" element={<Main/>} />
+                  <Route path="/home" element={<Home/>} />
                   <Route path="/about" element={<About/>} />
+                  <Route path="/contact" element={<Contact/>} />
+                  <Route path="/portfolio" element={<Portfolio/>} />
+
               </Routes>
 
               <RightBar/>
-              <Portfolio/>
               <Footer/>
+              
               {/*<TestButton />*/}
               <h1>Test Area</h1>
               <TestUseEffect/>

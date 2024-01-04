@@ -4,7 +4,7 @@ import { Card, Col, Row } from 'antd';
 function Portfolio(props) {
     return (
         <>
-        <div className='portfolio'>
+        <div className='portfolio main'>
             <Row gutter={16}>
                 <Col span={8}>
                     <Card title="Card title" bordered={false}>
